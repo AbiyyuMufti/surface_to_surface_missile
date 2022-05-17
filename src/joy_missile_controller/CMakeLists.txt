@@ -17,17 +17,53 @@ endif()
 
 # find dependencies
 find_package(ament_cmake REQUIRED)
-# uncomment the following section in order to fill in
-# further dependencies manually.
-# find_package(<dependency> REQUIRED)
 
-add_executable(joy_missile_controller src/joy_missile_controller.cpp)
-target_include_directories(joy_missile_controller PUBLIC
-  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-  $<INSTALL_INTERFACE:include>)
+find_package(geometry_msgs REQUIRED)
+find_package(rclcpp REQUIRED)
+find_package(rclcpp_components REQUIRED)
+find_package(sensor_msgs REQUIRED)
 
-install(TARGETS joy_missile_controller
+include_directories(include)
+
+add_library(${PROJECT_NAME} SHARED src/${PROJECT_NAME})
+
+include(GenerateExportHeader)
+generate_export_header(${PROJECT_NAME} EXPORT_FILE_NAME ${PROJECT_NAME}/${PROJECT_NAME}_export.h)
+target_include_directories(${PROJECT_NAME} PUBLIC "$<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}>")
+set_target_properties(${PROJECT_NAME} PROPERTIES EXPORT_HEADER_DIR "${CMAKE_CURRENT_BINARY_DIR}")
+
+ament_target_dependencies(${PROJECT_NAME}
+  "geometry_msgs"
+  "rclcpp"
+  "rclcpp_components"
+  "sensor_msgs"
+)
+
+rclcpp_components_register_nodes(${PROJECT_NAME}
+  "joy_missile_controller::JoyMissileController")
+
+add_executable(${PROJECT_NAME}_node src/joy_missile_controller_node.cpp)
+target_link_libraries(${PROJECT_NAME}_node ${PROJECT_NAME})
+set_target_properties(${PROJECT_NAME}_node
+  PROPERTIES OUTPUT_NAME joy_missile_controller_node PREFIX "")
+
+install(TARGETS ${PROJECT_NAME}
+  ARCHIVE DESTINATION lib
+  LIBRARY DESTINATION lib
+  RUNTIME DESTINATION bin)
+
+install(TARGETS ${PROJECT_NAME}_node
   DESTINATION lib/${PROJECT_NAME})
+
+install(DIRECTORY include/
+  DESTINATION include)
+
+install(FILES
+  ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}/${PROJECT_NAME}_export.h
+  DESTINATION include/${PROJECT_NAME})
+
+install(DIRECTORY launch config
+  DESTINATION share/${PROJECT_NAME})
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
@@ -40,4 +76,6 @@ if(BUILD_TESTING)
   ament_lint_auto_find_test_dependencies()
 endif()
 
+ament_export_include_directories(include)
+ament_export_libraries(${PROJECT_NAME})
 ament_package()
