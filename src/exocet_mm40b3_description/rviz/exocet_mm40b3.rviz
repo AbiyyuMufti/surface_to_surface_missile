@@ -50,29 +50,7 @@ Visualization Manager:
         All Enabled: true
         Booster_1:
           Value: true
-        FinHolder_1:
-          Value: true
-        FinHolder_2:
-          Value: true
-        FinHolder_3:
-          Value: true
-        FinHolder_4:
-          Value: true
-        Fin_1:
-          Value: true
-        Fin_2:
-          Value: true
-        Fin_3:
-          Value: true
-        Fin_4:
-          Value: true
         Wing1_1:
-          Value: true
-        Wing2_1:
-          Value: true
-        Wing3_1:
-          Value: true
-        Wing4_1:
           Value: true
         base_link:
           Value: true
@@ -85,25 +63,7 @@ Visualization Manager:
         base_link:
           Booster_1:
             {}
-          FinHolder_1:
-            Fin_1:
-              {}
-          FinHolder_2:
-            Fin_2:
-              {}
-          FinHolder_3:
-            Fin_3:
-              {}
-          FinHolder_4:
-            Fin_4:
-              {}
           Wing1_1:
-            {}
-          Wing2_1:
-            {}
-          Wing3_1:
-            {}
-          Wing4_1:
             {}
       Update Interval: 0
       Value: true
@@ -129,63 +89,8 @@ Visualization Manager:
         Expand Joint Details: false
         Expand Link Details: false
         Expand Tree: false
-        FinHolder_1:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        FinHolder_2:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        FinHolder_3:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        FinHolder_4:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        Fin_1:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        Fin_2:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        Fin_3:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        Fin_4:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
         Link Tree Style: Links in Alphabetic Order
         Wing1_1:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        Wing2_1:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        Wing3_1:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        Wing4_1:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -203,7 +108,7 @@ Visualization Manager:
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
-    Fixed Frame: Booster_1
+    Fixed Frame: base_link
     Frame Rate: 30
   Name: root
   Tools:
@@ -243,25 +148,25 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz_default_plugins/Orbit
-      Distance: 6.26679801940918
+      Distance: 13.853893280029297
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 0
-        Y: 0
-        Z: 0
+        X: -0.06740324199199677
+        Y: -0.007989329285919666
+        Z: 0.9171311855316162
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.34539860486984253
+      Pitch: 0.010398422367870808
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 0.28539496660232544
+      Yaw: 2.585397958755493
     Saved: ~
 Window Geometry:
   Displays:
@@ -277,5 +182,5 @@ Window Geometry:
   Views:
     collapsed: false
   Width: 1200
-  X: 60
-  Y: 60
+  X: 320
+  Y: 184

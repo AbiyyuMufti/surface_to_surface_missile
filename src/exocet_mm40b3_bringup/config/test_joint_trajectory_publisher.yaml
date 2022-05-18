@@ -1,0 +1,28 @@
+publisher_joint_trajectory_controller:
+  ros__parameters:
+
+    controller_name: "position_trajectory_controller"
+    wait_sec_between_publish: 6
+
+    goal_names: ["pos1", "pos2", "pos3", "pos4"]
+    pos1: [-2.0, -2.0, -2.0, -2.0]
+    pos2: [0.0, 0.0, 0.0, 0.0]
+    pos3: [2.0, 2.0, 2.0, 2.0]
+    pos4: [0.0, 0.0, 0.0, 0.0]
+
+    joints:
+      - wings_fold1
+      - wings_fold2
+      - wings_fold3
+      - wings_fold4
+
+    check_starting_point: true
+    starting_point_limits:
+      wings_fold1: [-2.0,2.0]
+      wings_fold2: [-2.0,2.0]
+      wings_fold3: [-2.0,2.0]
+      wings_fold4: [-2.0,2.0]
+      # wings_fold1: [-0.1,0.1]
+      # wings_fold2: [-0.1,0.1]
+      # wings_fold3: [-0.1,0.1]
+      # wings_fold4: [-0.1,0.1]

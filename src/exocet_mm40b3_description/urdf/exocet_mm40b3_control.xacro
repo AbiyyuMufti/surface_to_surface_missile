@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" >
+    <xacro:macro name="wings_joint" params="joint_name">
+        <joint name="${joint_name}" >
+            <command_interface name="position">
+                <param name="min">-1</param>
+                <param name="max">1</param>
+            </command_interface>
+            <state_interface name="position"/>
+            <!-- <state_interface name="velocity"/> -->
+            <!-- <state_interface name="effort"/> -->
+        </joint>
+    </xacro:macro>
+    <ros2_control name="GazeboSystem" type="system">
+        <hardware>
+            <plugin>gazebo_ros2_control/GazeboSystem</plugin>
+        </hardware>
+        <xacro:wings_joint joint_name="wings_fold1"/>
+        <xacro:wings_joint joint_name="wings_fold2"/>
+        <xacro:wings_joint joint_name="wings_fold3"/>
+        <xacro:wings_joint joint_name="wings_fold4"/>
+    </ros2_control>
+    <!-- ros 2 control plugin -->
+    <gazebo>
+        <plugin name="gazebo_ros2_control" filename="libgazebo_ros2_control.so">
+          <parameters>$(find exocet_mm40b3_description)/config/fold_control.yaml</parameters>
+        </plugin>
+    </gazebo>
+
+    <!-- ros 1 control plugin -->
+    <!-- <gazebo>
+        <plugin name="control" filename="libgazebo_ros_control.so">
+          <robotNamespace>/exocet_mm40b3</robotNamespace>
+          <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+        </plugin>
+      </gazebo> -->
+</robot>
